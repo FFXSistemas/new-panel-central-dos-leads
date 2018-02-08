@@ -33,3 +33,24 @@ if(! function_exists('emailType')) {
         }
     }
 }
+
+if(! function_exists('strpos_recursive')) {
+    /**
+     * @param $haystack
+     * @param $needle
+     * @param int $offset
+     * @param array $results
+     * @return array
+     */
+    function strpos_recursive($haystack, $needle, $offset = 0, &$results = array()) {
+        $offset = strpos($haystack, $needle, $offset);
+        if($offset === false) {
+            return $results;
+        } else {
+            $results[] = $offset;
+            return strpos_recursive($haystack, $needle, ($offset + 1), $results);
+        }
+    }
+
+}
+

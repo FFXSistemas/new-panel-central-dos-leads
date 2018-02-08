@@ -52,10 +52,27 @@ class EmailsRepository
             ->first();
     }
 
+    /**
+     * @param $id
+     * @param array $values
+     */
     public function update($id, array $values)
     {
         $email = $this->find($id);
         $email->update($values);
     }
 
+    /**
+     * @param $id
+     * @param array $values
+     */
+    public function updateByOrder($id, array $values)
+    {
+        $email = $this->getModel()
+            ->where('order_pegasus', $id)
+            ->get()
+            ->first();
+
+        $email->update($values);
+    }
 }
