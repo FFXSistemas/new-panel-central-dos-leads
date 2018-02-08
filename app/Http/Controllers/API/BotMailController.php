@@ -18,7 +18,6 @@ class BotMailController extends Controller
 {
     public function getCrivo(EmailsRepository $repository)
     {
-        echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
         $server = new Server('correio.pronorth.com.br', 143);
         $server->setAuthentication('backoffice-tele@pronorth.com.br', 'pronorth@2017');
 
