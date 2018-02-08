@@ -10,7 +10,9 @@ namespace App\Http\Controllers\API;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\UpdateSystem;
 use App\Repositories\EmailsRepository;
+use App\Repositories\UpdateSystemRepository;
 use Fetch\Server;
 use Fetch\Message;
 
@@ -64,6 +66,9 @@ class BotMailController extends Controller
             echo 'Subject: '.$subject.''.PHP_EOL; echo "<br>";
             echo 'Body: '.$message->getMessageBody().''. PHP_EOL; echo "<br>";
         }
+
+        $update = (new UpdateSystemRepository())->updateByType('roboc_crivo');
+        dd($update);
     }
 
 }
