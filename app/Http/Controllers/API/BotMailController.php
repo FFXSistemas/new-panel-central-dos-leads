@@ -24,10 +24,8 @@ class BotMailController extends Controller
         /** @var Message[] $message */
         $messages = $server->getOrderedMessages(SORTDATE,1, 30   );
         foreach ($messages as $message){
-            $subject = str_replace("RE: SOLICITAÇÃO ALÇADA FIBER SIEBEL - PEDIDO PEGASUS - ", "", $message->getSubject());
-            $subject = str_replace("RE: SOLICITAÇÃO ALÇADA FIBER SIEBEL - PEDIDO PEGASUS - ", "", $message->getSubject());
+            $subject = str_replace("RE: SOLICITAÇÃO ALÇADA FIBER SIEBEL - PEDIDO PEGASUS - ", "", $message->getSubject());
             var_dump($subject);
-
 
             if(is_numeric($subject)) {
                 $search = 'Sua solicitação foi atendida com sucesso';
@@ -39,7 +37,7 @@ class BotMailController extends Controller
 
                 if($found) {
                     $values = [
-                        "body" => utf8_decode($message->getMessageBody()),
+                        "body" => $message->getMessageBody(),
                         "status" => "APROVADO"
                     ];
                     $repository->updateByOrder($subject, $values );
