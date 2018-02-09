@@ -68,6 +68,8 @@ class EmailsRepository
      */
     public function updateByOrder($id, array $values)
     {
+        $id = str_replace(" ", "", $id);
+
         $email = $this->getModel()
             ->where('order_pegasus', $id)
             ->get()
