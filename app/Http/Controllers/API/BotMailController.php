@@ -67,7 +67,7 @@ class BotMailController extends Controller
             echo 'Body: '.$message->getMessageBody().''. PHP_EOL; echo "<br>";
         }
 
-        $update = (new UpdateSystemRepository())->updateByType('roboc_crivo');
+       // $update = (new UpdateSystemRepository())->updateByType('roboc_crivo');
         dd($update);
     }
 
