@@ -77,12 +77,11 @@ class EmailsRepository
             ->first();
 
         if($email !=null){
-            $email->update($values);
             $ch = curl_init();
 
             curl_setopt($ch, CURLOPT_URL, "https://hooks.slack.com/services/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");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"PEDIDO {$id} - {$values['status']}!\"}");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"PEDIDO {$id} - {$values['status']}! - Vendedor: {$email['user']}\"}");
             curl_setopt($ch, CURLOPT_POST, 1);
 
             $headers = array();
@@ -94,6 +93,8 @@ class EmailsRepository
                 echo 'Error:' . curl_error($ch);
             }
             curl_close ($ch);
+            $email->update($values);
+
         }
 
     }
