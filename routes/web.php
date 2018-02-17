@@ -1,7 +1,7 @@
 <?php
 
-Route::get('', function() {
-    return 'hello';
+Route::get('/sasa', function() {
+     echo env('BDATA_USER');
 });
 
 Route::get('/details', function () {

@@ -19,7 +19,7 @@ class UsersRepository
     public function findByUserAndPassword($user, $password)
     {
         return $this->getModel()
-            ->where('email', $user)
+            ->where('login', $user)
             ->where('password', md5($password))
             ->get();
     }

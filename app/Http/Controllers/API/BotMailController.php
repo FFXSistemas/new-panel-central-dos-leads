@@ -20,8 +20,8 @@ class BotMailController extends Controller
 {
     public function getCrivo(EmailsRepository $repository)
     {
-        $server = new Server('correio.pronorth.com.br', 143);
-        $server->setAuthentication('backoffice-tele@pronorth.com.br', 'pronorth@2017');
+        $server = new Server(env('BOT_MAIL_SERVER'), 143);
+        $server->setAuthentication(env('BOT_MAIL_LOGIN'), env('BOT_MAIL_PASS'));
 
         /** @var Message[] $message */
         $messages = $server->getOrderedMessages(SORTDATE,1, 30   );
