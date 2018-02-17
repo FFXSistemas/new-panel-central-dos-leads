@@ -36,5 +36,16 @@ class UsersRepository
             ->get();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getHookBySupervisor($id)
+    {
+        return $this->getModel()
+            ->where('id', $id)
+            ->first();
+    }
+
 
 }
