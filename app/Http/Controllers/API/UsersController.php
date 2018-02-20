@@ -17,7 +17,7 @@ class UsersController extends Controller
 {
     public function recoveryEmail(Request $request)
     {
-        $request->all();
+        var_dump($request->all());
         return [
             'success' => true,
         ];
