@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1', 'as' => 'v1.'], function(){
     Route::post('/store', ['uses' => 'API\\LeadsController@store', 'as' => 'store']);
     Route::post('/recovery-email', ['uses' => 'API\\UsersController@recoveryEmail', 'as' => 'recovery']);
+    Route::get('/teste', function (Request $request) {
+       return view('templates.emails.recovery');
+    });
 });
 
 Route::group(['prefix' => 'bot', 'as' => 'bot.'], function(){
