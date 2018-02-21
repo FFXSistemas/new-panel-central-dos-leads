@@ -13,8 +13,10 @@
         "illuminate/pagination": "^5.5",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "mailgun/mailgun-php": "^2.3",
+        "mailgun/mailgun-php": "^2.4",
         "php-http/curl-client": "^1.7",
+        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/message": "^1.6",
         "ralouphie/mimey": "^1.0",
         "tedivm/fetch": "^0.7.1"
     },
