@@ -470,7 +470,7 @@
                                 <tr>
                                     <td valign="top" class="bodyContent" mc:edit="body_content" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 20px;padding-right: 20px;padding-bottom: 20px;padding-left: 20px;text-align: left;">
                                         <h1 style="display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 100%;letter-spacing: normal;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;color: #202020 !important;">Solicitação de reset de senha.</h1>
-                                        Olá, Você solicitou a a recuperação da senha através do portal.<br> Clique no botão abaixo para prosseguir:<br><br>
+                                        Olá, Você solicitou a recuperação da sua senha através do portal.<br> Clique no botão abaixo para prosseguir:<br><br>
 
                                         <center>
                                             <a href="https://centraldosleads.com.br/recovery.php?token={!! $token !!}"><button>Resetar minha senha</button></a></center>
