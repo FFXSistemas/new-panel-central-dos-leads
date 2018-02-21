@@ -47,5 +47,16 @@ class UsersRepository
             ->first();
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     */
+    public function findByEmail($email)
+    {
+        return $this->getModel()
+            ->where('email', $email)
+            ->first();
+    }
+
 
 }
