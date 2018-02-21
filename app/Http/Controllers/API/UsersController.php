@@ -6,6 +6,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Repositories\RecoveryPasswordRepository;
 use App\Repositories\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Mailgun\Mailgun;
@@ -29,7 +30,7 @@ class UsersController extends Controller
             $token = base64_encode($user->email);
             $template = view('templates.emails.recovery', ['token' => md5($token)])->render();
             $recovery = (new RecoveryPasswordRepository())->create([
-                'token' => md5($token),
+                'token' => md5(Carbon::create()->format('Y-m-d H:i:s')),
                 'active' => '1',
                 'user_id' => $user->id
             ]);
