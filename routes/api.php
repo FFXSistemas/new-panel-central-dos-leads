@@ -28,4 +28,5 @@ Route::group(['prefix' => 'v1', 'as' => 'v1.'], function(){
 Route::group(['prefix' => 'bot', 'as' => 'bot.'], function(){
     Route::get('/crivo', ['uses' => 'API\\BotMailController@getCrivo', 'as' => 'crivo']);
     Route::get('/divergencia', ['uses' => 'API\\BotMailController@getDivergence', 'as' => 'divergencia']);
+    Route::get('/schedules', ['uses' => 'API\\BotMailController@getSchedules', 'as' => 'schedules']);
 });
