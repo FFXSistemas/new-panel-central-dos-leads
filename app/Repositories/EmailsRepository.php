@@ -116,7 +116,7 @@ class EmailsRepository
     {
         $id = str_replace(" ", "", $id);
 
-        $email = $this->getModel()
+        $email = $this->getScheduleModel()
             ->where('number_order', $id)
             ->where('status', "EM ANALISE")
             ->get()
