@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Models\Email;
+use App\Models\EmailSchedule;
 
 class EmailsRepository
 {
@@ -19,6 +20,14 @@ class EmailsRepository
     public function getModel()
     {
         return (new Email());
+    }
+
+    /**
+     * @return EmailSchedule
+     */
+    public function getScheduleModel()
+    {
+        return (new EmailSchedule());
     }
 
     /**
@@ -84,6 +93,43 @@ class EmailsRepository
             curl_setopt($ch, CURLOPT_URL, $supervisor->hook);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"PEDIDO {$id} - {$values['status']}! - Vendedor:   {$email['user']}\"}");
+            curl_setopt($ch, CURLOPT_POST, 1);
+
+            $headers = array();
+            $headers[] = "Content-Type: application/x-www-form-urlencoded";
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
+            }
+            curl_close ($ch);
+            $email->update($values);
+        }
+    }
+
+    /**
+     * @param $id
+     * @param array $values
+     */
+    public function updateByScheduledOrder($id, array $values)
+    {
+        $id = str_replace(" ", "", $id);
+
+        $email = $this->getModel()
+            ->where('number_order', $id)
+            ->where('status', "EM ANALISE")
+            ->get()
+            ->first();
+
+        if($email !=null){
+            $ch = curl_init();
+
+            $supervisor = (new UsersRepository())->getHookBySupervisor($email->supervisor_id);
+
+            curl_setopt($ch, CURLOPT_URL, $supervisor->hook);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"PEDIDO DE AGENDAMENTO ORDEM - {$id} - {$values['status']}! - Vendedor:   {$email['user']}\"}");
             curl_setopt($ch, CURLOPT_POST, 1);
 
             $headers = array();
