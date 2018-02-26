@@ -129,7 +129,7 @@ class EmailsRepository
 
             curl_setopt($ch, CURLOPT_URL, $supervisor->hook);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"PEDIDO DE AGENDAMENTO ORDEM - {$id} - {$values['status']}! - Vendedor:   {$email['user']}\"}");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"PEDIDO DE AGENDAMENTO ORDEM - {$id} - {$values['status']}! \"}");
             curl_setopt($ch, CURLOPT_POST, 1);
 
             $headers = array();
