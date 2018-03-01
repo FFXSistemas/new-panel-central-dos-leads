@@ -29,7 +29,6 @@ class SmsSendService
     public function sendLongCode($phone, $text)
     {
         $res = $this->client->request('GET', 'http://sistema.fusiontechnology.com.br:2738/sms/send?n='.$phone.'&m='.$text.'&f=0&u='.env('SMS_USER'));
-        var_dump($res->getBody());
         return ['success' => ($res->getStatusCode() == 200) ? true:false ];
     }
 
