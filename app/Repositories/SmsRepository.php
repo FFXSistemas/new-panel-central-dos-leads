@@ -16,9 +16,14 @@ class SmsRepository
         return (new SendSms());
     }
 
-    public function store()
+    /**
+     * @param array $values
+     * @return mixed
+     */
+    public function store(array $values)
     {
-
+        return $this->getModel()
+            ->create($values);
     }
 
     public function update()

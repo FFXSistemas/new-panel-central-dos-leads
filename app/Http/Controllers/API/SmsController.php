@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\SmsRepository;
 use App\Services\SmsSendService;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,13 @@ class SmsController extends Controller
     public function sendLongSms(Request $request)
     {
         $args = $request->all();
+        $store = (new SmsRepository())->store([
+            'user_id' => $args['user_id'],
+            'employer_id' => $args['employer_id'],
+            'number' => $args['number'],
+            'message' => $args['text'],
+            'route' => 0
+        ]);
         return $this->service->sendLongCode($args['number'], $args['text']);
     }
 
@@ -39,6 +47,13 @@ class SmsController extends Controller
     public function sendShortSms(Request $request)
     {
         $args = $request->all();
+        $store = (new SmsRepository())->store([
+            'user_id' => $args['user_id'],
+            'employer_id' => $args['employer_id'],
+            'number' => $args['number'],
+            'message' => $args['text'],
+            'route' => 2
+        ]);
         return $this->service->sendShortCode($args['number'], $args['text']);
     }
 
