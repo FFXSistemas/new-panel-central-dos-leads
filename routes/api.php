@@ -25,6 +25,10 @@ Route::group(['prefix' => 'v1', 'as' => 'v1.'], function(){
     Route::get('/teste', function (Request $request) {
        return view('templates.emails.recovery');
     });
+    Route::group(['prefix' => 'sms', 'as' => 'sms.'], function(){
+        Route::post('/send/short', ['uses' => 'API\\SmsController@sendShortSms', 'as' => 'short']);
+        Route::post('/send/long', ['uses' => 'API\\SmsController@sendLongSms', 'as' => 'long']);
+    });
 });
 
 Route::group(['prefix' => 'bot', 'as' => 'bot.'], function(){
