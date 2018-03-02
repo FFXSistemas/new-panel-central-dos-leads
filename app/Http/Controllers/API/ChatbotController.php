@@ -17,13 +17,13 @@ class ChatbotController extends Controller
 {
     /**
      * @param Request $request
+     * @return array
      */
     public function store(Request $request)
     {
         $body = file_get_contents('php://input');
         $body = json_decode($body, true);
-        var_dump($body);
         $store = (new ChatbotRepository())->create($body);
-        var_dump($store);
+        return ['success' => true];
     }
 }
