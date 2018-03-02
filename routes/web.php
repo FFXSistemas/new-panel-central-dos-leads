@@ -7,6 +7,19 @@ Route::get('/sasa', function() {
 Route::get('/details', function () {
     return view('pages.employee.details');
 });
+
+Route::get('/send-sms', function () {
+    $storage = (new \App\Repositories\PhonesRepository())->all();
+
+    $client = (new GuzzleHttp\Client());
+    foreach ($storage as $phone){
+        $request = $client->request('POST', 'http://ffxnetbr.com/api/v1/sms/send/long', [
+            'query' => ['user_id' => '1', 'employer_id' => '1', 'number' => $phone->phone, 'text' => 'Liberou a internet de fibra no seu bairro! 100 MEGA COM TELEFONE por apenas R$ 120,00! Assine já! http://goo.gl/njbDZ5']
+        ]);
+        var_dump($request);
+
+    }
+});
 /**
  * Login Routes
  */

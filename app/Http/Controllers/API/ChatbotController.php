@@ -20,8 +20,10 @@ class ChatbotController extends Controller
      */
     public function store(Request $request)
     {
-        $json = get_object_vars(json_decode($request->chatbot));
-        $store = (new ChatbotRepository())->create($json);
+        $body = file_get_contents('php://input');
+        $body = json_decode($body, true);
+        var_dump($body);
+        $store = (new ChatbotRepository())->create($body);
         var_dump($store);
     }
 }
