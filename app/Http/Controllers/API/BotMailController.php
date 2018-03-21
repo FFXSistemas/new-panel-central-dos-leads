@@ -26,7 +26,7 @@ class BotMailController extends Controller
         /** @var Message[] $message */
         $messages = $server->getOrderedMessages(SORTDATE,1, 30   );
         foreach ($messages as $message){
-            $subject = str_replace("RE: SOLICITAÇÃO ALÇADA FIBER SIEBEL - PEDIDO PEGASUS - ", "", $message->getSubject());
+            $subject = str_replace("RE: SOLICITAÇÃO ALÇADA FIBER SIEBEL - SIEBEL PÓS - PEDIDO PEGASUS - ", "", $message->getSubject());
             var_dump($subject);
 
             if(is_numeric($subject)) {
@@ -82,7 +82,7 @@ class BotMailController extends Controller
         /** @var Message[] $message */
         $messages = $server->getOrderedMessages(SORTDATE,1, 30   );
         foreach ($messages as $message){
-            $subject = str_replace("RE: DIVERGÊNCIA CADASTRAL - PEDIDO PEGASUS - ", "", $message->getSubject());
+            $subject = str_replace("RE: DIVERGÊNCIA CADASTRAL - SIEBEL PÓS - PEDIDO PEGASUS - ", "", $message->getSubject());
             var_dump($subject);
 
             if(is_numeric($subject)) {
