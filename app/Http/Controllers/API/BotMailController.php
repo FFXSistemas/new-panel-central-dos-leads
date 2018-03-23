@@ -206,7 +206,7 @@ class BotMailController extends Controller
                     "status" => "REPROVADO"
                 ];
                 $repository->updateByScheduledOrder($subject1, $values );
-            }
+            }   
             echo 'Subject: '.$subject.''.PHP_EOL; echo "<br>";
             echo 'Body: '.$message->getMessageBody().''. PHP_EOL; echo "<br>";
         }
