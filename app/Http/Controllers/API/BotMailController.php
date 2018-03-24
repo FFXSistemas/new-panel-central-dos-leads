@@ -84,6 +84,8 @@ class BotMailController extends Controller
         foreach ($messages as $message){
             $subject = str_replace("RE: DIVERGÊNCIA CADASTRAL - SIEBEL PÓS - PEDIDO PEGASUS - ", "", $message->getSubject());
             var_dump($subject);
+            $subject = str_replace("RE: DIVERGÊNCIA CADASTRAL - SIEBEL PÓS -PEDIDO PEGASUS - ", "", $message->getSubject());
+
 
             if(is_numeric($subject)) {
                 $search = 'Sua solicitação foi atendida com sucesso';
