@@ -26,7 +26,7 @@ class BotMailController extends Controller
         /** @var Message[] $message */
         $messages = $server->getOrderedMessages(SORTDATE,1, 30   );
         foreach ($messages as $message){
-            $subject = str_replace("RE: SOLICITAÇÃO ALÇADA FIBER SIEBEL - SIEBEL PÓS - PEDIDO PEGASUS - ", "", $message->getSubject());
+            $subject = str_replace("RE: SOLICITACAO ALÇADA SIEBEL FIBER – SCORE INSUFICIENTE BANDA LARGA - PEDIDO PEGASUS - ", "", $message->getSubject());
             var_dump($subject);
 
             if(is_numeric($subject)) {
@@ -82,10 +82,8 @@ class BotMailController extends Controller
         /** @var Message[] $message */
         $messages = $server->getOrderedMessages(SORTDATE,1, 30   );
         foreach ($messages as $message){
-            $subject = str_replace("RE: DIVERGÊNCIA CADASTRAL - SIEBEL PÓS - PEDIDO PEGASUS - ", "", $message->getSubject());
+            $subject = str_replace("SOLICITACAO ALÇADA FIBER SIEBEL – DIVERGÊNCIA NOME DA MÃE - PEDIDO PEGASUS - ", "", $message->getSubject());
             var_dump($subject);
-            $subject = str_replace("RE: DIVERGÊNCIA CADASTRAL - SIEBEL PÓS -PEDIDO PEGASUS - ", "", $message->getSubject());
-
 
             if(is_numeric($subject)) {
                 $search = 'Sua solicitação foi atendida com sucesso';
