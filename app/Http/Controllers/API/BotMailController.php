@@ -26,13 +26,9 @@ class BotMailController extends Controller
         /** @var Message[] $message */
         $messages = $server->getOrderedMessages(SORTDATE,1, 30   );
         foreach ($messages as $message){
-<<<<<<< HEAD
             $pattern = '/.+\- PEDIDO /';
             $replacement = '';
-            $subject = preg_replace($pattern, $replacement, $message->getSubject()); ;
-=======
-            $subject = str_replace("RE: SOLICITACAO ALÇADA SIEBEL FIBER – SCORE INSUFICIENTE BANDA LARGA - PEDIDO PEGASUS - ", "", $message->getSubject());
->>>>>>> 9af2c5218f1dd30a64d25a106fd029e37400eb24
+            $subject = preg_replace($pattern, $replacement, $message->getSubject());
             var_dump($subject);
 
             if(is_numeric($subject)) {
